@@ -1,0 +1,24 @@
+{
+  "name": "omni-search",
+  "license": "MIT",
+  "authors": [
+    "Pedro Catré <me@pedrocatre.com>"
+  ],
+  "description": "A jump-start for jQuery plugins development.",
+  "homepage": "https://github.com/pedrocatre/omni-search",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "jquery-plugin",
+    "omni-search"
+  ],
+  "main": "src/omni.search.js",
+  "dependencies": {
+    "jquery": "1"
+  },
+  "ignore": [
+    "npm-debug.log",
+    "bower_components",
+    "node_modules"
+  ]
+}

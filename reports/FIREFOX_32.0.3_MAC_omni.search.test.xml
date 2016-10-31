@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="omni.search.test"
+    errors="0" failures="0" hostname="" id="" package="omni.search.test" skipped="0"
+    tests="1" time="4.048" timestamp="Thu, 27 Oct 2016 11:42:37 GMT">
+  
+    <testcase name="should accept key presses to navigate and select elements" time="4.048" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>

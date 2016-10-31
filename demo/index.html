@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>omni-search</title>
+		<link rel="stylesheet" href="../src/css/omni.search.css"/>
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../src/omni.search.js"></script>
+	</head>
+	<body>
+		<button class="open-search">Open search</button>
+		<h1 class="msg-placeholder"></h1>
+		<script>
+			$( function() {
+				var $search = $( "body" ).omniSearch();
+
+				var ALERT_TYPE = 'ALERT',
+					NAVIGATE_TO_URL_TYPE = 'NAVIGATE_TO_URL',
+					REPLACE_MSG_PLACEHOLDER_TYPE = 'REPLACE_MSG_PLACEHOLDER_TYPE';
+				var searchItems = [
+					{
+						title: "Navigate to google",
+						type: NAVIGATE_TO_URL_TYPE
+					},
+					{
+						title: "Important action change placeholder text",
+						type: REPLACE_MSG_PLACEHOLDER_TYPE
+					},
+					{
+						title: "Trigger alert",
+						type: ALERT_TYPE
+					}
+				];
+
+				var callback = function(activatedItemData) {
+					switch (activatedItemData.type) {
+						case REPLACE_MSG_PLACEHOLDER_TYPE:
+							$('.msg-placeholder').text(activatedItemData.title);
+							break;
+						case NAVIGATE_TO_URL_TYPE:
+							window.location.href = 'https://www.google.com';
+							break;
+						case ALERT_TYPE:
+							alert('Activated item data ' + activatedItemData.title);
+							break;
+						default:
+							alert('Unknown type');
+					}
+
+				};
+
+				$('button.open-search').click(function() {
+					$search.omniSearch('open', searchItems, callback);
+				});
+
+			} );
+		</script>
+	</body>
+</html>

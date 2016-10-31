@@ -1,0 +1,110 @@
+.omni-search {
+	ul::-webkit-scrollbar {
+		display: none;
+	}
+
+	position: fixed;
+	top: 10vh;
+	left: 20vw;
+	width: 60vw;
+	display: block;
+	padding: 0;
+	color: #666;
+	background-color: #fafafa;
+	border: 1px solid #e5e5e5;
+	box-shadow: 0 0 30px rgba(102, 96, 91, 0.7);
+	box-sizing: border-box;
+	z-index: 9999999;
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+	text-rendering: optimizeLegibility;
+
+	input[type="text"], input[type="text"]:focus, input[type="text"]:active {
+		display: block;
+		border: 0;
+		width: 100%;
+		padding: 15px;
+		-webkit-appearance: none;
+		border: none;
+		outline: none;
+		background: #fff;
+		font-size: 17px;
+		box-sizing: border-box;
+		margin: 0;
+		color: #555459;
+		box-shadow: none;
+		height: 50px;
+		position: relative;
+		z-index: 10;
+	}
+
+	ul.search-results-list {
+		width: 100%;
+		z-index: 9;
+		top: 0;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		border-right: 1px solid transparent;
+		max-height: 80vh;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+
+	ul.search-results-list li.selected-search-result, ul.search-results-list li:hover {
+		background-color: #DFDFDF;
+	}
+	ul.search-results-list li.selected-search-result {
+		color: #000;
+	}
+
+	.search-results-list li {
+		padding: 15px 20px;
+		box-sizing: border-box;
+		cursor: pointer;
+		background-color: #EFEFEF;
+		line-height: 24px;
+		display: flex;
+		align-items: center;
+		margin: 0;
+	}
+
+	.search-results-list li:not(:last-of-type) {
+		border-bottom: 1px dashed #ccc;
+	}
+
+	.search-results-list li span.title {
+		display: inline-block;
+		flex: 1 1 auto;
+		font-size: 14px;
+		margin-left: 10px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		vertical-align: middle;
+	}
+
+	.search-results-list li .favicon-img {
+		flex: 0 0 50px;
+		text-align: center;
+	}
+
+	.search-results-list li .favicon-img img {
+		width: 24px;
+		height: auto;
+		vertical-align: bottom;
+	}
+}
+
+@media all and (max-width: 600px) {
+	.omni-search {
+		left: 5vw;
+		width: 90vw;
+	}
+}
+
+@media all and (min-width: 1500px) {
+	.omni-search {
+		left: calc(50vw - 500px);
+		width: 1000px;
+	}
+}

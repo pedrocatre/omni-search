@@ -1,6 +1,14 @@
 # omni-search
 > A UI element for global searches
 
+## Install
+
+`npm install omni-search --save`
+
+or
+
+`bower install omni-search --save`
+
 ## Usage
 
 1. Include jQuery:

@@ -1,6 +1,10 @@
 # omni-search
 > A UI element for global searches
 
+## Demo
+
+[http://pedrocatre.com/omni-search/](http://pedrocatre.com/omni-search/)
+
 ## Example project using omni-search
 
 [WunderlistNavigator](https://github.com/pedrocatre/wunderlist-navigator/tree/feature/omni-search-lib),

@@ -27,7 +27,7 @@ or
 3. Call the plugin:
 
 	```javascript
-	$search.omniSearch('open', searchItems, callback);
+	$('#element').omniSearch('open', searchItems, callback);
 	```
 
 ## Developing

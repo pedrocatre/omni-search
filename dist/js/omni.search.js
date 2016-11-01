@@ -1,14 +1,13 @@
 /*
- *  omni-search - v1.0.0
+ *  omni-search - v0.0.1
  *  A UI element for global searches
- *
+ *  
  *
  *  Made by Pedro Catré
  *  Under MIT License
  */
 (function () {
     'use strict';
-    console.log('1');
     /**
      * Configuration constants for the extension
      *
@@ -16,8 +15,8 @@
      */
     var Templates;
     (function (Templates) {
-        Templates[Templates["MAIN_TEMPLATE"] = "<div class=\"omni-search\" style=\"display: none;\">\n\t\t\t\t\t<input type=\"text\">\n\t\t\t\t\t<ul class=\"lists-list\">\n\t\t\t\t\t</ul>\n\t\t\t\t</div>"] = "MAIN_TEMPLATE";
-        Templates[Templates["LIST_TEMPLATE"] = "<li class=\"list-item\">\n\t\t\t\t\t<span class=\"favicon-img\">\n\t\t\t\t\t<img src=\"{favicon}\" onerror=\"this.src='{default_favicon}';\">\n\t\t\t\t\t</span>\n\t\t\t\t\t<span class=\"title\">{title}</span>\n\t\t\t\t</li>"] = "LIST_TEMPLATE";
+        Templates[Templates["MAIN_TEMPLATE"] = "<div class=\"omni-search\" style=\"display: none;\">\n\t\t\t\t\t<input type=\"text\">\n\t\t\t\t\t<ul class=\"search-results-list\">\n\t\t\t\t\t</ul>\n\t\t\t\t</div>"] = "MAIN_TEMPLATE";
+        Templates[Templates["SEARCH_RESULT_ELEMENT_TEMPLATE"] = "<li class=\"search-result\">\n\t\t\t\t\t<span class=\"favicon-img\">\n\t\t\t\t\t<img src=\"{favicon}\" onerror=\"this.src='{default_favicon}';\">\n\t\t\t\t\t</span>\n\t\t\t\t\t<span class=\"title\">{title}</span>\n\t\t\t\t</li>"] = "SEARCH_RESULT_ELEMENT_TEMPLATE";
     })(Templates || (Templates = {}));
     ;
     var KeyCodes;
@@ -40,25 +39,20 @@
         // Default favicon to use
         DEFAULT_FAVICON: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAMklEQVR4AWMgEkT9R4INWBUgKX0Q1YBXQYQCkhKEMDILogSnAhhEV4AGRqoCTEhkPAMAbO9DU+cdCDkAAAAASUVORK5CYII=',
         // References to extension DOM elements
-        SELECTED_CLASS: 'selected-list',
-        SELECTED_SEARCH_RESULT_SELECTOR: '.selected-list',
+        SELECTED_CLASS: 'selected-search-result',
+        SELECTED_SEARCH_RESULT_SELECTOR: '.selected-search-result',
         FAVICON_IMG_SELECTOR: '.favicon-img img',
         OMNI_SEARCH_SELECTOR: '.omni-search',
-        SEARCH_RESULTS_LIST_SELECTOR: '.omni-search .lists-list',
-        SEARCH_RESULT_SELECTOR: '.list-item',
-        SEARCH_INPUT_SELECTOR: '.omni-search input[type="text"]',
-        // References to wunderlist DOM elements
-        LIST_LINKS: '.sidebarItem a',
-        SELECTED_TASK: '.taskItem.selected',
-        // Shortcut for activation
-        MASTER_KEY: '⌘+⇧+l'
+        SEARCH_RESULTS_LIST_SELECTOR: '.omni-search .search-results-list',
+        SEARCH_RESULT_SELECTOR: '.search-result',
+        SEARCH_INPUT_SELECTOR: '.omni-search input[type="text"]'
     };
     /**
-     * Houses all the lists, once fetched
+     * Houses all the the search results
      *
      * @type array
      */
-    var allLists = [];
+    var allSearchResults = [];
     var onActivateSearchItemCallback;
     // undefined is used here as the undefined global variable in ECMAScript 3 is
     // mutable (ie. it can be changed by someone else). undefined isn't really being
@@ -84,13 +78,13 @@
         this.init();
     }
     /**
-     * Moves the focus for the selected list for the passed action
+     * Moves the focus for the selected search result for the passed action
      *
      * @param action
      */
-    function moveListFocus(action) {
+    function moveSearchResultFocus(action) {
         var $firstSelected = $(Config.SELECTED_SEARCH_RESULT_SELECTOR);
-        // If some list was already selected
+        // If some search result was already selected
         if ($firstSelected.length !== 0) {
             // Make it unselected
             $firstSelected.removeClass(Config.SELECTED_CLASS);
@@ -110,48 +104,45 @@
         }
         $nextSelected.get(0).scrollIntoViewIfNeeded();
     }
-    function populateLists(lists) {
-        var $lists = getListsHtml(lists);
-        $(Config.SEARCH_RESULTS_LIST_SELECTOR).html($lists);
+    function populateSearchResults(searchResults) {
+        var $searchResults = getSearchResultsHtml(searchResults);
+        $(Config.SEARCH_RESULTS_LIST_SELECTOR).html($searchResults);
         $(Config.SEARCH_RESULT_SELECTOR).first().addClass(Config.SELECTED_CLASS);
     }
     /**
      * Generates HTML string for the passed array of objects
      *
-     * @param lists
+     * @param search results
      * @returns {string}
      */
-    function getListsHtml(lists) {
-        var $listsHtml = $('<span></span>');
-        lists.forEach(function (list) {
-            var tempListTemplate = Templates.LIST_TEMPLATE, faviconUrl = list.favIconUrl || Config.DEFAULT_FAVICON;
-            tempListTemplate = tempListTemplate.replace('{favicon}', faviconUrl);
-            tempListTemplate = tempListTemplate.replace('{default_favicon}', Config.DEFAULT_FAVICON);
-            tempListTemplate = tempListTemplate.replace('{title}', list.title);
-            // tempListTemplate = tempListTemplate.replace('{listPath}', list.href);
-            //tempListTemplate = tempListTemplate.replace('{dataItem}', JSON.stringify(list.data));
-            var $listTemplate = $(tempListTemplate);
-            $listTemplate = $listTemplate.data(list);
-            $listsHtml.append($listTemplate);
+    function getSearchResultsHtml(searchResults) {
+        var $searchResultsHtml = $('<span></span>');
+        searchResults.forEach(function (searchResult) {
+            var tempSearchResultsTemplate = Templates.SEARCH_RESULT_ELEMENT_TEMPLATE, faviconUrl = searchResult.favIconUrl || Config.DEFAULT_FAVICON;
+            tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{favicon}', faviconUrl);
+            tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{default_favicon}', Config.DEFAULT_FAVICON);
+            tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{title}', searchResult.title);
+            var $searchResultTemplate = $(tempSearchResultsTemplate);
+            $searchResultTemplate = $searchResultTemplate.data(searchResult);
+            $searchResultsHtml.append($searchResultTemplate);
         });
-        return $listsHtml;
+        return $searchResultsHtml;
     }
     /**
-     * Filters lists by the specified keyword string
+     * Filters search results by the specified keyword string
      *
      * @param keyword
      */
-    function filterLists(keyword) {
+    function filterSearchResults(keyword) {
         keyword = keyword.toLowerCase();
-        var matches = [], tempTitle = '', tempUrl = '';
-        allLists.map(function (list) {
-            tempTitle = list.title.toLowerCase();
-            tempUrl = list.href.toLowerCase();
-            if (tempTitle.match(keyword) || tempUrl.match(keyword)) {
-                matches.push(list);
+        var matches = [], textToFilterBy = '';
+        allSearchResults.map(function (searchResult) {
+            textToFilterBy = JSON.stringify(searchResult).toLowerCase();
+            if (textToFilterBy.match(keyword)) {
+                matches.push(searchResult);
             }
         });
-        populateLists(matches);
+        populateSearchResults(matches);
     }
     /**
      * Gets the action to be performed for the given keycode
@@ -159,7 +150,7 @@
      * @param keyCode
      * @returns {*}
      */
-    function getSwitcherAction(keyCode) {
+    function getActionFor(keyCode) {
         switch (keyCode) {
             case KeyCodes.UP_KEY:
                 return Actions.GOING_UP;
@@ -181,15 +172,11 @@
         }
     }
     /**
-     * Switches to the currently focused list
+     * Switches to the currently focused search result
      */
     function callSelectedItemAction() {
         var $firstSelected = $(Config.OMNI_SEARCH_SELECTOR).find(Config.SELECTED_SEARCH_RESULT_SELECTOR).first();
-        // TODO put item as constant
         callItemAction($firstSelected);
-        //
-        //var listPath = $firstSelected.data('listPath');
-        //switchToList(listPath);
     }
     /**
      * Performs the action for the passed keypress event
@@ -197,11 +184,11 @@
      * @param event
      */
     function handleKeyPress(event) {
-        var action = getSwitcherAction(event.keyCode);
+        var action = getActionFor(event.keyCode);
         switch (action) {
             case Actions.GOING_UP:
             case Actions.GOING_DOWN:
-                moveListFocus(action);
+                moveSearchResultFocus(action);
                 break;
             case Actions.ESCAPING:
                 $(Config.OMNI_SEARCH_SELECTOR).hide();
@@ -216,27 +203,25 @@
         $(Config.SEARCH_INPUT_SELECTOR).val('');
     }
     function bindUi() {
-        // mouse-down instead of click because click gets triggered after the blur event in which case wunderlist navigator
+        // mouse-down instead of click because click gets triggered after the blur event in which case omni-search
         // would already be hidden (@see blur event below) and click will not be performed
         $(document).on('mousedown', Config.SEARCH_RESULT_SELECTOR, function () {
             var $this = $(this);
             callItemAction($this);
-            //switchToList(listPath);
         });
-        // Hide the switcher on blurring of input
+        // Hide the omni-search on blurring of input
         $(document).on('blur', Config.SEARCH_INPUT_SELECTOR, function () {
             closeOmniSearch();
         });
-        // Actions on tabs listing
         $(document).on('keydown', Config.SEARCH_INPUT_SELECTOR, function (e) {
-            // Switcher was visible and either down or up key was pressed
+            // omni-search was visible and either down or up key was pressed
             if ($(Config.OMNI_SEARCH_SELECTOR).is(':visible')) {
                 handleKeyPress(e);
             }
         });
-        // Filter for lists
+        // Filter for search results
         $(document).on('keyup', Config.SEARCH_INPUT_SELECTOR, function (e) {
-            var keyCode = e.keyCode, action = getSwitcherAction(keyCode);
+            var keyCode = e.keyCode, action = getActionFor(keyCode);
             switch (action) {
                 case Actions.GOING_DOWN:
                 case Actions.GOING_UP:
@@ -246,10 +231,10 @@
                 default:
                     var keyword = $(this).val();
                     if ($.trim(keyword) !== '') {
-                        filterLists(keyword);
+                        filterSearchResults(keyword);
                     }
                     else {
-                        populateLists(allLists);
+                        populateSearchResults(allSearchResults);
                     }
             }
         });
@@ -271,13 +256,13 @@
             appendUi($container);
             bindUi();
         },
-        open: function (lists, onActivateSearchItem) {
+        open: function (searchResults, onActivateSearchItem) {
             console.log('>> Show omni search');
             $(Config.OMNI_SEARCH_SELECTOR).show();
             $(Config.SEARCH_INPUT_SELECTOR).focus();
-            allLists = lists;
+            allSearchResults = searchResults;
             onActivateSearchItemCallback = onActivateSearchItem;
-            populateLists(lists);
+            populateSearchResults(searchResults);
         },
         close: closeOmniSearch
     });

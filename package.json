@@ -1,6 +1,6 @@
 {
   "name": "omni-search",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A UI element for global searches",
   "keywords": [
     "jquery-plugin",

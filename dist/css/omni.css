@@ -43,9 +43,9 @@
     max-height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden; }
-  .omni-search ul.search-results-list li.selected-list, .omni-search ul.search-results-list li:hover {
+  .omni-search ul.search-results-list li.selected-search-result, .omni-search ul.search-results-list li:hover {
     background-color: #DFDFDF; }
-  .omni-search ul.search-results-list li.selected-list {
+  .omni-search ul.search-results-list li.selected-search-result {
     color: #000; }
   .omni-search .search-results-list li {
     padding: 15px 20px;

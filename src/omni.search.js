@@ -307,4 +307,3 @@
         }
     };
 }());
-//# sourceMappingURL=omni.search.js.map

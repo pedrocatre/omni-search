@@ -1,6 +1,11 @@
 # omni-search
 > A UI element for global searches
 
+## Example project using omni-search
+
+[WunderlistNavigator](https://github.com/pedrocatre/wunderlist-navigator/tree/feature/omni-search-lib),
+quickly navigate between to-do lists in wunderlist.
+
 ## Install
 
 `npm install omni-search --save`

@@ -10,6 +10,8 @@
 [WunderlistNavigator](https://github.com/pedrocatre/wunderlist-navigator/tree/feature/omni-search-lib),
 quickly navigate between to-do lists in wunderlist.
 
+![WunderlistNavigator](https://github.com/pedrocatre/wunderlist-navigator/raw/master/screenshots/demo.gif)
+
 ## Install
 
 `npm install omni-search --save`

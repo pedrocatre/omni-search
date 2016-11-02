@@ -1,6 +1,17 @@
 # omni-search
 > A UI element for global searches
 
+## Use Cases
+
+Some use cases include adding quick navigation to your webapp so users can just jump to where they want to be
+without leaving the keyboard or clicking several links. You can also provide a list of actions the user can perform in the application.
+
+You just:
+
+* Choose what triggers the global search to open, for example a keyboard shortcut.
+* Provide a list of search results
+* Provide a callback to handle what happens when the item is clicked by the user
+
 ## Demo
 
 [http://pedrocatre.com/omni-search/demo/index.html](http://pedrocatre.com/omni-search/demo/index.html)
@@ -38,7 +49,8 @@ or
 3. Call the plugin:
 
 	```javascript
-	$('#element').omniSearch('open', searchItems, callback);
+	var $search = $('#element').omniSearch();
+	$search.omniSearch('open', searchItems, callback);
 	```
 
 ## Developing

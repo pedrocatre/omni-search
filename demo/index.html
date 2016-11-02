@@ -77,11 +77,14 @@
 
 <script>
 	$(function () {
-		var $search = $("body").omniSearch();
+		// Call omni search on an element
+		var $search = $('body').omniSearch();
 
 		var ALERT_TYPE = 'ALERT',
 			NAVIGATE_TO_URL_TYPE = 'NAVIGATE_TO_URL',
 			REPLACE_MSG_PLACEHOLDER_TYPE = 'REPLACE_MSG_PLACEHOLDER_TYPE';
+
+		// Create a list of search items
 		var searchItems = [
 			{
 				title: "Navigate to google",
@@ -97,6 +100,8 @@
 			}
 		];
 
+		// Create a callback function that gets triggered when a search item is clicked or when it is selected
+		// and a user clicks Enter
 		var callback = function (activatedItemData) {
 			switch (activatedItemData.type) {
 				case REPLACE_MSG_PLACEHOLDER_TYPE:
@@ -114,7 +119,9 @@
 
 		};
 
+		// On click
 		$('button.open-search').click(function () {
+			// Open omni-search
 			$search.omniSearch('open', searchItems, callback);
 		});
 

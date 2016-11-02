@@ -24,7 +24,6 @@
   "homepage": "",
   "license": "MIT",
   "dependencies": {
-    "jquery": ">=1.5.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

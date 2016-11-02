@@ -165,6 +165,7 @@
     function callSelectedItemAction() {
         var $firstSelected = $(Config.OMNI_SEARCH_SELECTOR).find(Config.SELECTED_SEARCH_RESULT_SELECTOR).first();
         callItemAction($firstSelected);
+        closeOmniSearch();
     }
     /**
      * Performs the action for the passed keypress event

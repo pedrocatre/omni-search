@@ -116,7 +116,18 @@ Example usage:
 			console.log('open omni-search');
 			$search.omniSearch('open', searchItems, callback);
 		}
-```
+````
+
+## Methods
+
+* `$search.omniSearch('open', searchItems, callback);` open omni-search
+* `$search.omniSearch('close');` close omni-search
+
+**Note:** there should not be many good reasons to call a method to close the omni-search since it already closes when:
+
+* The user clicks out
+* When a user triggers an action by clicking `Enter`or clicking the mouse.
+* When the user presses `Esc
 
 ## Developing
 

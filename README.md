@@ -41,6 +41,10 @@ or
 
 ## Developing
 
+Install dependencies by running:
+
+`npm install`
+
 Run `grunt build --force`to build the project (compile sass, minify css, concat javascript and uglify).
 
 Install typescript `npm install -g typescript`

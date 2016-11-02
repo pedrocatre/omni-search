@@ -1,5 +1,5 @@
 /*
- *  omni-search - v0.0.1
+ *  omni-search - v0.0.2
  *  A UI element for global searches
  *  
  *
@@ -54,24 +54,12 @@
      */
     var allSearchResults = [];
     var onActivateSearchItemCallback;
-    // undefined is used here as the undefined global variable in ECMAScript 3 is
-    // mutable (ie. it can be changed by someone else). undefined isn't really being
-    // passed in so we can ensure the value of it is truly undefined. In ES5, undefined
-    // can no longer be modified.
-    // window and document are passed through as local variables rather than global
-    // as this (slightly) quickens the resolution process and can be more efficiently
-    // minified (especially when both are regularly referenced in your plugin).
     // Create the defaults once
     var pluginName = "omniSearch", defaults = {
         propertyName: "value"
     };
-    // The actual plugin constructor
     function OmniSearch(element, options) {
         this.element = element;
-        // jQuery has an extend method which merges the contents of two or
-        // more objects, storing the result in the first object. The first object
-        // is generally empty as we don't want to alter the default options for
-        // future instances of the plugin
         this.settings = $.extend({}, defaults, options);
         this._defaults = defaults;
         this._name = pluginName;
@@ -167,7 +155,7 @@
     function callItemAction($item) {
         var activatedItemData = $item.data();
         if (typeof onActivateSearchItemCallback === 'function') {
-            // TODO fix should use apply $firstSelected[0]
+            // TODO fix should use apply $firstSelected[0] onActivateSearchItemCallback.apply( null, activatedItemData );
             onActivateSearchItemCallback(activatedItemData);
         }
     }
@@ -246,12 +234,6 @@
     // Avoid Plugin.prototype conflicts
     $.extend(OmniSearch.prototype, {
         init: function () {
-            // Place initialization logic here
-            // You already have access to the DOM element and
-            // the options via the instance, e.g. this.element
-            // and this.settings
-            // you can add more functions like the one below and
-            // call them like the example below
             var $container = $(this.element);
             appendUi($container);
             bindUi();
@@ -266,25 +248,11 @@
         },
         close: closeOmniSearch
     });
-    // You don't need to change something below:
-    // A really lightweight plugin wrapper around the constructor,
-    // preventing against multiple instantiations and allowing any
-    // public function (ie. a function whose name doesn't start
-    // with an underscore) to be called via the jQuery plugin,
-    // e.g. $(element).defaultPluginName('functionName', arg1, arg2)
     $.fn[pluginName] = function (options) {
         var args = arguments;
-        // Is the first parameter an object (options), or was omitted,
-        // instantiate a new instance of the plugin.
         if (options === undefined || typeof options === 'object') {
             return this.each(function () {
-                // Only allow the plugin to be instantiated once,
-                // so we check that the element has no plugin instantiation yet
                 if (!$.data(this, 'plugin_' + pluginName)) {
-                    // if it has no instance, create a new one,
-                    // pass options to our plugin constructor,
-                    // and store the plugin instance
-                    // in the elements jQuery data object.
                     $.data(this, 'plugin_' + pluginName, new OmniSearch(this, options));
                 }
             });

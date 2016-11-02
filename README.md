@@ -3,7 +3,7 @@
 
 ## Demo
 
-[http://pedrocatre.com/omni-search/](http://pedrocatre.com/omni-search/)
+[http://pedrocatre.com/omni-search/demo/index.html](http://pedrocatre.com/omni-search/demo/index.html)
 
 ## Example project using omni-search
 

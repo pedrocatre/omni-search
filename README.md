@@ -53,6 +53,10 @@ or
 	$search.omniSearch('open', searchItems, callback);
 	```
 
+**Note:** omni-search handles the keys when it is open (arrow keys to navigate and `Enter to trigger an action)` but
+it does not assume a keyboard shortcut to open the omni-search. If you want to open omni-search with a shortcut you must
+add a library, for example: [mousetrap](https://github.com/ccampbell/mousetrap) or [keymaster](https://github.com/madrobby/keymaster).
+
 ## Developing
 
 Install dependencies by running:

@@ -8,6 +8,7 @@
 			integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
 			crossorigin="anonymous"></script>
 	<script src="../src/omni.search.js"></script>
+	<script src="vendor/keymaster-1.6.3/keymaster.js"></script>
 
 	<style>
 		body {
@@ -53,7 +54,7 @@
 	<div class="row">
 		<div class="text-center">
 			<button type="button" class="btn btn-primary btn-lg open-search">Open search</button>
-			or press <strong>COMMAND+SHIFT+b</strong> or <strong>CTRL+SHIFT+b</strong>
+			or press <strong>COMMAND+SHIFT+y</strong> or <strong>CTRL+SHIFT+y</strong>
 		</div>
 	</div>
 
@@ -120,9 +121,18 @@
 		};
 
 		// On click
+		function openOmniSearch() {
+			console.log('open omni-search');
+			$search.omniSearch('open', searchItems, callback);
+		}
+
+		key('⌘+⇧+y', function() {
+			openOmniSearch()
+		});
+
 		$('button.open-search').click(function () {
 			// Open omni-search
-			$search.omniSearch('open', searchItems, callback);
+			openOmniSearch();
 		});
 
 	});

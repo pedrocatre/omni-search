@@ -1,58 +1,95 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>omni-search</title>
-		<link rel="stylesheet" href="../src/css/omni.search.css"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-		<script src="../src/omni.search.js"></script>
-	</head>
-	<body>
-		<button class="open-search">Open search</button>
-		<h1 class="msg-placeholder"></h1>
-		<script>
-			$( function() {
-				var $search = $( "body" ).omniSearch();
+<head>
+	<title>omni-search</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../src/css/omni.search.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+			integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
+			crossorigin="anonymous"></script>
+	<script src="../src/omni.search.js"></script>
 
-				var ALERT_TYPE = 'ALERT',
-					NAVIGATE_TO_URL_TYPE = 'NAVIGATE_TO_URL',
-					REPLACE_MSG_PLACEHOLDER_TYPE = 'REPLACE_MSG_PLACEHOLDER_TYPE';
-				var searchItems = [
-					{
-						title: "Navigate to google",
-						type: NAVIGATE_TO_URL_TYPE
-					},
-					{
-						title: "Important action change placeholder text",
-						type: REPLACE_MSG_PLACEHOLDER_TYPE
-					},
-					{
-						title: "Trigger alert",
-						type: ALERT_TYPE
-					}
-				];
+	<style>
+		body {
+			padding-top: 20px;
+			padding-bottom: 20px;
+			-webkit-font-smoothing: antialiased;
+			background-color: #2b303b;
+			font-family: 'Source Sans Pro', sans-serif;
+			color: #8fa1b3;
+		}
 
-				var callback = function(activatedItemData) {
-					switch (activatedItemData.type) {
-						case REPLACE_MSG_PLACEHOLDER_TYPE:
-							$('.msg-placeholder').text(activatedItemData.title);
-							break;
-						case NAVIGATE_TO_URL_TYPE:
-							window.location.href = 'https://www.google.com';
-							break;
-						case ALERT_TYPE:
-							alert('Activated item data ' + activatedItemData.title);
-							break;
-						default:
-							alert('Unknown type');
-					}
+		.container {
+			margin-top: 200px;
+		}
 
-				};
+		.msg-placeholder {
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
 
-				$('button.open-search').click(function() {
-					$search.omniSearch('open', searchItems, callback);
-				});
+<div class="container">
+	<div class="row">
+		<div class="text-center">
+			<button type="button" class="btn btn-primary btn-lg open-search">Open search</button>
+			or press <strong>COMMAND+SHIFT+b</strong> or <strong>CTRL+SHIFT+b</strong>
+		</div>
+	</div>
 
-			} );
-		</script>
-	</body>
+	<div class="row">
+		<div class="text-center">
+			<h1 class="msg-placeholder"></h1>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$(function () {
+		var $search = $("body").omniSearch();
+
+		var ALERT_TYPE = 'ALERT',
+			NAVIGATE_TO_URL_TYPE = 'NAVIGATE_TO_URL',
+			REPLACE_MSG_PLACEHOLDER_TYPE = 'REPLACE_MSG_PLACEHOLDER_TYPE';
+		var searchItems = [
+			{
+				title: "Navigate to google",
+				type: NAVIGATE_TO_URL_TYPE
+			},
+			{
+				title: "Important action change placeholder text",
+				type: REPLACE_MSG_PLACEHOLDER_TYPE
+			},
+			{
+				title: "Trigger alert",
+				type: ALERT_TYPE
+			}
+		];
+
+		var callback = function (activatedItemData) {
+			switch (activatedItemData.type) {
+				case REPLACE_MSG_PLACEHOLDER_TYPE:
+					$('.msg-placeholder').text(activatedItemData.title);
+					break;
+				case NAVIGATE_TO_URL_TYPE:
+					window.location.href = 'https://www.google.com';
+					break;
+				case ALERT_TYPE:
+					alert('Activated item data ' + activatedItemData.title);
+					break;
+				default:
+					alert('Unknown type');
+			}
+
+		};
+
+		$('button.open-search').click(function () {
+			$search.omniSearch('open', searchItems, callback);
+		});
+
+	});
+</script>
+</body>
 </html>

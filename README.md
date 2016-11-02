@@ -63,6 +63,9 @@ Run `grunt serve` to serve the demo: http://localhost:9006/demo/index.html
 
 Run `nightwatch`
 
+## Credit
+
+Inspired by the [TabSwitcher project](https://github.com/kamranahmedse/tab-switcher), a tab switcher for chrome.
 
 ## License
 

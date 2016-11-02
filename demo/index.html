@@ -78,7 +78,7 @@
 
 <script>
 	$(function () {
-		// Call omni search on an element
+		// Call omni-search on an element
 		var $search = $('body').omniSearch();
 
 		var ALERT_TYPE = 'ALERT',
@@ -120,20 +120,20 @@
 
 		};
 
-		// On click
-		function openOmniSearch() {
-			console.log('open omni-search');
-			$search.omniSearch('open', searchItems, callback);
-		}
-
+		// On keyboard shortcut
 		key('⌘+⇧+y', function() {
 			openOmniSearch()
 		});
 
+		// On click
 		$('button.open-search').click(function () {
-			// Open omni-search
 			openOmniSearch();
 		});
+
+		function openOmniSearch() {
+			console.log('open omni-search');
+			$search.omniSearch('open', searchItems, callback);
+		}
 
 	});
 </script>

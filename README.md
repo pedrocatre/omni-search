@@ -57,6 +57,67 @@ or
 it does not assume a keyboard shortcut to open the omni-search. If you want to open omni-search with a shortcut you must
 add a library, for example: [mousetrap](https://github.com/ccampbell/mousetrap) or [keymaster](https://github.com/madrobby/keymaster).
 
+Example usage:
+
+```javascript
+// Call omni-search on an element
+		var $search = $('body').omniSearch();
+
+		var ALERT_TYPE = 'ALERT',
+			NAVIGATE_TO_URL_TYPE = 'NAVIGATE_TO_URL',
+			REPLACE_MSG_PLACEHOLDER_TYPE = 'REPLACE_MSG_PLACEHOLDER_TYPE';
+
+		// Create a list of search items
+		var searchItems = [
+			{
+				title: "Navigate to google",
+				type: NAVIGATE_TO_URL_TYPE
+			},
+			{
+				title: "Important action change placeholder text",
+				type: REPLACE_MSG_PLACEHOLDER_TYPE
+			},
+			{
+				title: "Trigger alert",
+				type: ALERT_TYPE
+			}
+		];
+
+		// Create a callback function that gets triggered when a search item is clicked or when it is selected
+		// and a user clicks Enter
+		var callback = function (activatedItemData) {
+			switch (activatedItemData.type) {
+				case REPLACE_MSG_PLACEHOLDER_TYPE:
+					$('.msg-placeholder').text(activatedItemData.title);
+					break;
+				case NAVIGATE_TO_URL_TYPE:
+					window.location.href = 'https://www.google.com';
+					break;
+				case ALERT_TYPE:
+					alert('Activated item data ' + activatedItemData.title);
+					break;
+				default:
+					alert('Unknown type');
+			}
+
+		};
+
+		// On keyboard shortcut
+		key('⌘+⇧+y', function() {
+			openOmniSearch()
+		});
+
+		// On click
+		$('button.open-search').click(function () {
+			openOmniSearch();
+		});
+
+		function openOmniSearch() {
+			console.log('open omni-search');
+			$search.omniSearch('open', searchItems, callback);
+		}
+```
+
 ## Developing
 
 Install dependencies by running:

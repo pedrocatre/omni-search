@@ -14,4 +14,4 @@ before_install:
   - "grunt serve &"
 
 script:
-  - "nightwatch -e travis --verbose"
+  - "nightwatch -e travis"

@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
 	'use strict';
 
 	/**
@@ -15,8 +15,8 @@
 				</div>`,
 		SEARCH_RESULT_ELEMENT_TEMPLATE  =
 				`<li class="search-result">
-					<span class="favicon-img">
-					<img src="{favicon}" onerror="this.src='{default_favicon}';">
+					<span class="search-element-img-container">
+						<img src="{search_element_icon}" onerror="this.src='{default_search_element_icon}';">
 					</span>
 					<span class="title">{title}</span>
 				</li>`
@@ -38,13 +38,13 @@
 
 	const Config = {
 
-		// Default favicon to use
-		DEFAULT_FAVICON: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAMklEQVR4AWMgEkT9R4INWBUgKX0Q1YBXQYQCkhKEMDILogSnAhhEV4AGRqoCTEhkPAMAbO9DU+cdCDkAAAAASUVORK5CYII=',
+		// Default icon that appears next to the search element in case no other is provided
+		DEFAULT_SEARCH_ELEMENT_ICON: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAMklEQVR4AWMgEkT9R4INWBUgKX0Q1YBXQYQCkhKEMDILogSnAhhEV4AGRqoCTEhkPAMAbO9DU+cdCDkAAAAASUVORK5CYII=',
 
 		// References to extension DOM elements
 		SELECTED_CLASS						: 'selected-search-result',
 		SELECTED_SEARCH_RESULT_SELECTOR  	: '.selected-search-result',
-		FAVICON_IMG_SELECTOR   				: '.favicon-img img',
+		SEARCH_ELEMENT_IMG_SELECTOR   				: '.search-element-img-container img',
 		OMNI_SEARCH_SELECTOR  				: '.omni-search',
 		SEARCH_RESULTS_LIST_SELECTOR     	: '.omni-search .search-results-list',
 		SEARCH_RESULT_SELECTOR      		: '.search-result',
@@ -124,10 +124,10 @@
 		searchResults.forEach(function(searchResult){
 
 			var tempSearchResultsTemplate = Templates.SEARCH_RESULT_ELEMENT_TEMPLATE,
-				faviconUrl = searchResult.favIconUrl || Config.DEFAULT_FAVICON;
+				searchElementImgUrl = searchResult.searchElementImgUrl || Config.DEFAULT_SEARCH_ELEMENT_ICON;
 
-			tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{favicon}', faviconUrl);
-			tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{default_favicon}', Config.DEFAULT_FAVICON);
+			tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{search_element_icon}', searchElementImgUrl);
+			tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{default_search_element_icon}', Config.DEFAULT_SEARCH_ELEMENT_ICON);
 			tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{title}', searchResult.title);
 			var $searchResultTemplate = $(tempSearchResultsTemplate);
 			$searchResultTemplate = $searchResultTemplate.data(searchResult);
@@ -338,6 +338,6 @@
 			return returns !== undefined ? returns : this;
 		}
 	};
-}());
+}(jQuery));
 
 

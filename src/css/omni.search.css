@@ -67,10 +67,10 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     vertical-align: middle; }
-  .omni-search .search-results-list li .favicon-img {
+  .omni-search .search-results-list li .search-element-img-container {
     flex: 0 0 50px;
     text-align: center; }
-  .omni-search .search-results-list li .favicon-img img {
+  .omni-search .search-results-list li .search-element-img-container img {
     width: 24px;
     height: auto;
     vertical-align: bottom; }

@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
     'use strict';
     /**
      * Configuration constants for the extension
@@ -8,7 +8,7 @@
     var Templates;
     (function (Templates) {
         Templates[Templates["MAIN_TEMPLATE"] = "<div class=\"omni-search\" style=\"display: none;\">\n\t\t\t\t\t<input type=\"text\">\n\t\t\t\t\t<ul class=\"search-results-list\">\n\t\t\t\t\t</ul>\n\t\t\t\t</div>"] = "MAIN_TEMPLATE";
-        Templates[Templates["SEARCH_RESULT_ELEMENT_TEMPLATE"] = "<li class=\"search-result\">\n\t\t\t\t\t<span class=\"favicon-img\">\n\t\t\t\t\t<img src=\"{favicon}\" onerror=\"this.src='{default_favicon}';\">\n\t\t\t\t\t</span>\n\t\t\t\t\t<span class=\"title\">{title}</span>\n\t\t\t\t</li>"] = "SEARCH_RESULT_ELEMENT_TEMPLATE";
+        Templates[Templates["SEARCH_RESULT_ELEMENT_TEMPLATE"] = "<li class=\"search-result\">\n\t\t\t\t\t<span class=\"search-element-img-container\">\n\t\t\t\t\t\t<img src=\"{search_element_icon}\" onerror=\"this.src='{default_search_element_icon}';\">\n\t\t\t\t\t</span>\n\t\t\t\t\t<span class=\"title\">{title}</span>\n\t\t\t\t</li>"] = "SEARCH_RESULT_ELEMENT_TEMPLATE";
     })(Templates || (Templates = {}));
     ;
     var KeyCodes;
@@ -28,12 +28,12 @@
     })(Actions || (Actions = {}));
     ;
     var Config = {
-        // Default favicon to use
-        DEFAULT_FAVICON: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAMklEQVR4AWMgEkT9R4INWBUgKX0Q1YBXQYQCkhKEMDILogSnAhhEV4AGRqoCTEhkPAMAbO9DU+cdCDkAAAAASUVORK5CYII=',
+        // Default icon that appears next to the search element in case no other is provided
+        DEFAULT_SEARCH_ELEMENT_ICON: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAMklEQVR4AWMgEkT9R4INWBUgKX0Q1YBXQYQCkhKEMDILogSnAhhEV4AGRqoCTEhkPAMAbO9DU+cdCDkAAAAASUVORK5CYII=',
         // References to extension DOM elements
         SELECTED_CLASS: 'selected-search-result',
         SELECTED_SEARCH_RESULT_SELECTOR: '.selected-search-result',
-        FAVICON_IMG_SELECTOR: '.favicon-img img',
+        SEARCH_ELEMENT_IMG_SELECTOR: '.search-element-img-container img',
         OMNI_SEARCH_SELECTOR: '.omni-search',
         SEARCH_RESULTS_LIST_SELECTOR: '.omni-search .search-results-list',
         SEARCH_RESULT_SELECTOR: '.search-result',
@@ -98,9 +98,9 @@
     function getSearchResultsHtml(searchResults) {
         var $searchResultsHtml = $('<span></span>');
         searchResults.forEach(function (searchResult) {
-            var tempSearchResultsTemplate = Templates.SEARCH_RESULT_ELEMENT_TEMPLATE, faviconUrl = searchResult.favIconUrl || Config.DEFAULT_FAVICON;
-            tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{favicon}', faviconUrl);
-            tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{default_favicon}', Config.DEFAULT_FAVICON);
+            var tempSearchResultsTemplate = Templates.SEARCH_RESULT_ELEMENT_TEMPLATE, searchElementImgUrl = searchResult.searchElementImgUrl || Config.DEFAULT_SEARCH_ELEMENT_ICON;
+            tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{search_element_icon}', searchElementImgUrl);
+            tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{default_search_element_icon}', Config.DEFAULT_SEARCH_ELEMENT_ICON);
             tempSearchResultsTemplate = tempSearchResultsTemplate.replace('{title}', searchResult.title);
             var $searchResultTemplate = $(tempSearchResultsTemplate);
             $searchResultTemplate = $searchResultTemplate.data(searchResult);
@@ -275,4 +275,4 @@
             return returns !== undefined ? returns : this;
         }
     };
-}());
+}(jQuery));

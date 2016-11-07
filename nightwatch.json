@@ -45,7 +45,7 @@
 				"path" : "./reports"
 			},
 			"desiredCapabilities" : {
-				"browserName" : "firefox",
+				"browserName" : "phantomjs",
 				"javascriptEnabled": true,
 				"databaseEnabled": true,
 				"locationContextEnabled": true,

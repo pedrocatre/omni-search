@@ -8,10 +8,10 @@ node_js:
 sudo: required
 
 before_install:
-  - npm install grunt-cli -g
-  - npm install -g nightwatch
-  - npm install
+  - "npm install grunt-cli -g"
+  - "npm install -g nightwatch"
+  - "npm install"
+  - "grunt serve"
 
 script:
-  - "grunt serve"
   - "nightwatch -e travis --verbose"

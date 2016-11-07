@@ -8,7 +8,6 @@ node_js:
 sudo: required
 
 before_install:
-	# Install grunt-cli globally before installing all dependencies, including grunt
   - npm install grunt-cli -g
   - npm install -g nightwatch
   - npm install

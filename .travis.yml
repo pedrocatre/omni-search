@@ -19,5 +19,4 @@ before_script:
 
 script:
   - "grunt serve"
-    #- "./nightwatch -e travis --verbose"
-  - "nightwatch -e travis"
+  - "nightwatch -e travis --verbose"

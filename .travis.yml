@@ -11,7 +11,7 @@ before_install:
   - "npm install grunt-cli -g"
   - "npm install selenium-standalone -g"
   - "selenium-standalone install"
-  - "selenium-standalone start"
+  - "selenium-standalone start &"
   - "npm install -g nightwatch"
   - "npm install"
   - "grunt serve &"

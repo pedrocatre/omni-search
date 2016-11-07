@@ -161,3 +161,4 @@ Inspired by the [TabSwitcher project](https://github.com/kamranahmedse/tab-switc
 ## License
 
 [MIT License](http://pedrodcatre.mit-license.org/) © Pedro Catré
+

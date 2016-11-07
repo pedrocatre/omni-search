@@ -156,7 +156,6 @@ module.exports = function( grunt ) {
 	//grunt.registerTask( "default", [ "jshint", "build", "karma:unit:run" ] );
 
 	grunt.registerTask('serveAsync', [
-		'concurrent:serve',
-		'shell:e2eTest'
+		'concurrent:serve'
 	]);
 };

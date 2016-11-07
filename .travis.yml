@@ -11,7 +11,7 @@ before_install:
   - "npm install grunt-cli -g"
   - "npm install -g nightwatch"
   - "npm install"
-  - "grunt serve"
+  - "grunt serve &"
 
 script:
   - "nightwatch -e travis --verbose"

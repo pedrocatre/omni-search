@@ -5,6 +5,19 @@ node_js:
   - "0.12"
   - "0.10"
 
-# Install grunt-cli globally before installing all dependencies, including grunt
+sudo: required
+
 before_install:
+	# Install grunt-cli globally before installing all dependencies, including grunt
   - npm install grunt-cli -g
+  - npm install -g nightwatch
+  - npm install
+
+before_script:
+  # give some time to init data, and to start
+  - "sleep 15"
+
+script:
+  - "grunt serve"
+    #- "./nightwatch -e travis --verbose"
+  - "nightwatch -e travis"

@@ -116,6 +116,7 @@ function openOmniSearch() {
 	console.log('open omni-search');
 	$search.omniSearch('open', searchItems, callback);
 }
+
 ````
 
 ## Methods

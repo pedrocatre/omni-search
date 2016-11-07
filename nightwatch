@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+
+// -------------------
+// nightwatchjs script running
+//   - automatically downloads the selenium jar if missing
+//   - automatically passes through all arguments to the runner.js
+// -------------------
+// 1st time Setup:
+//   cd webapp/tests/nightwatch/custom-maxgalbu
+//   npm install
+//
+// Assumptions:
+//
+//   cd webapp
+//   ./nightwatch
+// -------------------
+
+var fs = require('fs');
+var path = require('path');
+
+
+// -------------------
+// CONFIG
+// -------------------
+
+// -------------------
+// runner for nightwatch
+// -------------------
+var runNightwatch = function() {
+  require('nightwatch/bin/start-selenium');
+}
+
+// -------------------
+// Verify selenium-standalone NPM package exists
+//   indicative of a valid setup
+//     $ (cd .. && npm install)
+// -------------------
+var npm_path = "node_modules/selenium-standalone";
+if (!fs.existsSync(npm_path)) {
+  console.log('Selenium Standalone NPM Not Found: ' + server_path);
+  console.log('');
+  console.log('    (cd .. && npm install)');
+  console.log('');
+  console.log('then try again...');
+  console.log('');
+  console.log('if still not working, look to see if the selenium-server-standalone version has changed');
+  console.log('  note: it must match on ./nightwatch.json {selenium{server_path');
+  console.log('');
+  process.exit(1);
+}
+
+// -------------------
+// Verify selenium drivers exist as needed
+//   indicative of a valid setup
+// -------------------
+var selenium = require('selenium-standalone');
+selenium.install({
+  version: '2.45.0',
+  baseURL: 'http://selenium-release.storage.googleapis.com',
+  drivers: {
+    chrome: {
+      // check for more recent versions of chrome driver here:
+      // http://chromedriver.storage.googleapis.com/index.html
+      version: '2.15',
+      arch: process.arch,
+      baseURL: 'http://chromedriver.storage.googleapis.com'
+    },
+    /*
+  },
+  logger: function(message) {
+    console.log(message);
+  },
+  progressCb: function(totalLength, progressLength, chunkLength) {
+    */
+  }
+}, runNightwatch);

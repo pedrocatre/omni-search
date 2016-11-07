@@ -1,9 +1,6 @@
 language: node_js
 node_js:
   - "stable"
-  - "4"
-  - "0.12"
-  - "0.10"
 
 sudo: required
 
@@ -12,9 +9,9 @@ before_install:
   - "npm install selenium-standalone -g"
   - "selenium-standalone install"
   - "npm install -g nightwatch"
+  - "selenium-standalone start &"
   - "npm install"
   - "grunt serve &"
-  - "selenium-standalone start &"
 
 script:
   - "nightwatch -e travis --verbose"

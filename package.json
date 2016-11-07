@@ -23,8 +23,7 @@
   },
   "homepage": "",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",
@@ -42,7 +41,7 @@
     "karma-firefox-launcher": "^0.1.6",
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-qunit": "^0.1.5",
-    "phantomjs": "^1.9.18",
+    "phantomjs": "^1.9.20",
     "qunitjs": "^1.19.0"
   },
   "scripts": {

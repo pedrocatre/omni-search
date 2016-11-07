@@ -12,10 +12,6 @@ before_install:
   - npm install -g nightwatch
   - npm install
 
-before_script:
-  # give some time to init data, and to start
-  - "sleep 15"
-
 script:
   - "grunt serve"
   - "nightwatch -e travis --verbose"

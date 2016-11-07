@@ -35,7 +35,7 @@
 		},
 
 		"travis" : {
-			"launch_url" : "http://localhost:3000",
+			"launch_url" : "http://localhost",
 			"selenium_host" : "127.0.0.1",
 			"selenium_port" : 4444,
 			"silent" : true,

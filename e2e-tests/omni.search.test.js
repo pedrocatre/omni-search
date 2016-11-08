@@ -83,4 +83,10 @@ module.exports = {
         thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
         browser.end();
     },
+    'should accept key presses to navigate and select elements': function (browser) {
+        givenWentToSecondSearchResultUsingArrowKeys(browser);
+        whenClickEnter(browser);
+        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
+        browser.end();
+    }
 };

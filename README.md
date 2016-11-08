@@ -49,18 +49,26 @@ or
 	<script src="dist/js/omni.search.js"></script>
 	```
 
-3. Call the plugin:
+3. Call the plugin by passing a list of search items and a callback when an item is triggered:
 
 	```javascript
 	var $search = $('#element').omniSearch();
 	$search.omniSearch('open', searchItems, callback);
 	```
+	
+### searchItems
+	
+You can pass any data you like in the searchItems. If you pass searchElementImgUrl to override the default icon for the element.
+
+### callback
+ 
+The callback gets passed all the data of the triggered element.
 
 **Note:** omni-search handles the keys when it is open (arrow keys to navigate and `Enter to trigger an action)` but
 it does not assume a keyboard shortcut to open the omni-search. If you want to open omni-search with a shortcut you must
 add a library, for example: [mousetrap](https://github.com/ccampbell/mousetrap) or [keymaster](https://github.com/madrobby/keymaster).
 
-Example usage:
+### Example usage:
 
 ```javascript
 // Call omni-search on an element

@@ -82,17 +82,17 @@ module.exports = {
 		browser.end();
 	},
 
-	'should search by second word of the title' : function(browser) {
-		givenSearchText(browser, 'google');
-		thenNumberOfSearchResultsIs(browser, 1);
-		browser.end();
-	},
-    //
-	// 'should search upper case' : function(browser) {
-	// 	givenSearchText(browser, 'IMPORT');
+	// 'should search by second word of the title' : function(browser) {
+	// 	givenSearchText(browser, 'google');
 	// 	thenNumberOfSearchResultsIs(browser, 1);
 	// 	browser.end();
 	// },
+    //
+	'should search upper case' : function(browser) {
+		givenSearchText(browser, 'IMPORT');
+		thenNumberOfSearchResultsIs(browser, 1);
+		browser.end();
+	},
     //
 	// 'should trigger search element action' : function(browser) {
 	// 	givenSearchText(browser, 'IMPORT');

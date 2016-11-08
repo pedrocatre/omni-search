@@ -50,44 +50,4 @@ module.exports = {
         thenNumberOfSearchResultsIs(browser, TOTAL_NUMBER_OF_SEARCH_ELEMENTS);
         browser.end();
     },
-    'should search by the 1st word': function (browser) {
-        givenSearchText(browser, 'important');
-        thenNumberOfSearchResultsIs(browser, 1);
-        browser.end();
-    },
-    'should search by non existing text': function (browser) {
-        givenSearchText(browser, 'searching for this will return nothing');
-        thenNumberOfSearchResultsIs(browser, 0);
-        browser.end();
-    },
-    'should search by nothing': function (browser) {
-        givenSearchWithResult(browser);
-        givenSearchText(browser, ' ');
-        thenNumberOfSearchResultsIs(browser, TOTAL_NUMBER_OF_SEARCH_ELEMENTS);
-        browser.end();
-    },
-    'should search by second word of the title': function (browser) {
-        givenSearchText(browser, 'google');
-        thenNumberOfSearchResultsIs(browser, 1);
-        browser.end();
-    },
-    'should search upper case': function (browser) {
-        givenSearchText(browser, 'IMPORT');
-        thenNumberOfSearchResultsIs(browser, 1);
-        browser.end();
-    },
-    'should trigger search element action': function (browser) {
-        givenSearchText(browser, 'IMPORT');
-        thenNumberOfSearchResultsIs(browser, 1);
-        whenClickSelectedItem(browser);
-        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
-        browser.end();
-    },
-    'should accept key presses to navigate and select elements': function (browser) {
-        givenWentToSecondSearchResultUsingArrowKeys(browser);
-        whenClickEnter(browser);
-        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
-        browser.end();
-    }
 };
-//# sourceMappingURL=omni.search.test.js.map

@@ -37,7 +37,7 @@
         OMNI_SEARCH_SELECTOR: '.omni-search',
         SEARCH_RESULTS_LIST_SELECTOR: '.omni-search .search-results-list',
         SEARCH_RESULT_SELECTOR: '.search-result',
-        SEARCH_INPUT_SELECTOR: '.omni-search input[type="text"]'
+        SEARCH_INPUT_SELECTOR: '.omni-search input[type="text"]',
     };
     /**
      * Houses all the the search results

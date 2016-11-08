@@ -17,7 +17,9 @@ You just:
 
 ## Demo
 
-[http://pedrocatre.com/omni-search/demo/index.html](http://pedrocatre.com/omni-search/demo/index.html)
+Default: [http://pedrocatre.com/omni-search/demo/index.html](http://pedrocatre.com/omni-search/demo/index.html)
+
+Dark theme: [http://pedrocatre.com/omni-search/demo/dark-theme.html](http://pedrocatre.com/omni-search/demo/dark-theme.html)
 
 ## Example project using omni-search
 
@@ -45,9 +47,12 @@ or
 2. Include plugin's code and style:
 
 	```html
-	<link rel="stylesheet" href="dist/css/omni.search.css"/>
+	<link rel="stylesheet" href="dist/css/omni-search.css"/>
+	<!--Optional dark theme-->
+	<link rel="stylesheet" href="dist/css/omni-search.css"/>
 	<script src="dist/js/omni.search.js"></script>
 	```
+
 
 3. Call the plugin by passing a list of search items and a callback when an item is triggered:
 

@@ -1,0 +1,29 @@
+.omni-search {
+
+	color: #c8c8c8;
+	background-color: #fafafa;
+	border: 3px solid #252526;
+	box-shadow: 0 0 30px rgba(102, 96, 91, 0.26);
+
+	input[type="text"], input[type="text"]:focus, input[type="text"]:active {
+
+		background: #3c3c3c;
+
+		color: #c8c8c8;
+	}
+
+	ul.search-results-list li.selected-search-result, ul.search-results-list li:hover {
+		background-color: #073655;
+	}
+	ul.search-results-list li.selected-search-result {
+		color: #c8c8c8;
+	}
+
+	.search-results-list li {
+		background-color: #252526;
+	}
+
+	.search-results-list li:not(:last-of-type) {
+		border-bottom: none;
+	}
+}

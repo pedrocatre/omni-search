@@ -39,7 +39,6 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border-right: 1px solid transparent;
     max-height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden; }
@@ -84,4 +83,4 @@
     left: calc(50vw - 500px);
     width: 1000px; } }
 
-/*# sourceMappingURL=omni.search.css.map */
+/*# sourceMappingURL=omni-search.css.map */

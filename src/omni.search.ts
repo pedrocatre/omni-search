@@ -213,7 +213,7 @@
 				moveSearchResultFocus(action);
 				break;
 			case Actions.ESCAPING:
-				$(Config.OMNI_SEARCH_SELECTOR).hide();
+				closeOmniSearch();
 				break;
 			case Actions.SWITCHING:
 				callSelectedItemAction();

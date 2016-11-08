@@ -1,6 +1,9 @@
 # omni-search
 > A UI element for global searches
 
+[![Build Status](https://travis-ci.org/pedrocatre/omni-search.png)](https://travis-ci.org/pedrocatre/omni-search)
+
+
 ## Use cases
 
 Some use cases include adding quick navigation to your webapp so users can just jump to where they want to be

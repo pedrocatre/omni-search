@@ -88,7 +88,7 @@
 		// Create a list of search items
 		var searchItems = [
 			{
-				title: "Navigate to google",
+				title: "Fork me on GitHub",
 				type: NAVIGATE_TO_URL_TYPE
 			},
 			{
@@ -109,7 +109,7 @@
 					$('.msg-placeholder').text(activatedItemData.title);
 					break;
 				case NAVIGATE_TO_URL_TYPE:
-					window.location.href = 'https://www.google.com';
+					window.location.href = 'https://github.com/pedrocatre/omni-search';
 					break;
 				case ALERT_TYPE:
 					alert('Activated item data ' + activatedItemData.title);

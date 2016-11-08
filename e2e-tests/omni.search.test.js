@@ -50,4 +50,9 @@ module.exports = {
         thenNumberOfSearchResultsIs(browser, TOTAL_NUMBER_OF_SEARCH_ELEMENTS);
         browser.end();
     },
+    'should search by the 1st word': function (browser) {
+        givenSearchText(browser, 'important');
+        thenNumberOfSearchResultsIs(browser, 1);
+        browser.end();
+    },
 };

@@ -63,11 +63,11 @@ module.exports = {
 		browser.end();
 	},
 
-	// 'should search by the 1st word' : function(browser) {
-	// 	givenSearchText(browser, 'important');
-	// 	thenNumberOfSearchResultsIs(browser, 1);
-	// 	browser.end();
-	// },
+	'should search by the 1st word' : function(browser) {
+		givenSearchText(browser, 'important');
+		thenNumberOfSearchResultsIs(browser, 1);
+		browser.end();
+	},
 
 	// 'should search by non existing text' : function(browser) {
 	// 	givenSearchText(browser, 'searching for this will return nothing');

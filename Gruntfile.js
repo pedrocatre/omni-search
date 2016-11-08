@@ -136,8 +136,6 @@ module.exports = function( grunt ) {
 	} );
 
 	grunt.loadNpmTasks( "grunt-contrib-concat" );
-	//grunt.loadNpmTasks( "grunt-contrib-jshint" );
-	//grunt.loadNpmTasks( "grunt-jscs" );
 	grunt.loadNpmTasks( "grunt-contrib-uglify" );
 	grunt.loadNpmTasks( "grunt-contrib-watch" );
 	grunt.loadNpmTasks( "grunt-karma" );
@@ -148,12 +146,8 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks('grunt-concurrent');
 
 	grunt.registerTask( "travis", [ "karma:travis" ] );
-	//grunt.registerTask( "travis", [ "jshint", "karma:travis" ] );
-	//grunt.registerTask( "lint", [ "jscs" ] );
-	//grunt.registerTask( "lint", [ "jshint", "jscs" ] );
 	grunt.registerTask( "build", [ "shell:typescript", "sass", "cssmin", "concat", "uglify" ] );
 	grunt.registerTask( "default", [ "build", "karma:unit:run" ] );
-	//grunt.registerTask( "default", [ "jshint", "build", "karma:unit:run" ] );
 
 	grunt.registerTask('serveAsync', [
 		'concurrent:serve'

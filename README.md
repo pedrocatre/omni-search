@@ -3,6 +3,11 @@
 
 [![Build Status](https://travis-ci.org/pedrocatre/omni-search.png)](https://travis-ci.org/pedrocatre/omni-search)
 
+## Demo
+
+Default: [http://pedrocatre.com/omni-search/demo/index.html](http://pedrocatre.com/omni-search/demo/index.html)
+
+Dark theme: [http://pedrocatre.com/omni-search/demo/dark-theme.html](http://pedrocatre.com/omni-search/demo/dark-theme.html)
 
 ## Use cases
 
@@ -14,12 +19,6 @@ You just:
 * Choose what triggers the global search to open, for example a keyboard shortcut
 * Provide a list of search results
 * Provide a callback to handle what happens when the item is clicked by the user
-
-## Demo
-
-Default: [http://pedrocatre.com/omni-search/demo/index.html](http://pedrocatre.com/omni-search/demo/index.html)
-
-Dark theme: [http://pedrocatre.com/omni-search/demo/dark-theme.html](http://pedrocatre.com/omni-search/demo/dark-theme.html)
 
 ## Example project using omni-search
 

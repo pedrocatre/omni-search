@@ -63,6 +63,7 @@ module.exports = {
     'should search by nothing': function (browser) {
         givenSearchWithResult(browser);
         givenSearchText(browser, ' ');
+        givenSearchText(browser, ' ');
         thenNumberOfSearchResultsIs(browser, TOTAL_NUMBER_OF_SEARCH_ELEMENTS);
         browser.end();
     },

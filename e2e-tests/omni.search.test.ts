@@ -93,16 +93,16 @@ module.exports = {
 		thenNumberOfSearchResultsIs(browser, 1);
 		browser.end();
 	},
-    //
-	// 'should trigger search element action' : function(browser) {
-	// 	givenSearchText(browser, 'IMPORT');
-	// 	thenNumberOfSearchResultsIs(browser, 1);
-	// 	whenClickSelectedItem(browser);
-    //
-     //    thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
-    //
-	// 	browser.end();
-	// },
+
+	'should trigger search element action' : function(browser) {
+		givenSearchText(browser, 'IMPORT');
+		thenNumberOfSearchResultsIs(browser, 1);
+		whenClickSelectedItem(browser);
+
+        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
+
+		browser.end();
+	},
     //
 	// 'should accept key presses to navigate and select elements' : function(browser) {
 	// 	givenWentToSecondSearchResultUsingArrowKeys(browser);

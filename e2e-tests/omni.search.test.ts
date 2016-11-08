@@ -75,12 +75,12 @@ module.exports = {
 		browser.end();
 	},
 
-	// 'should search by nothing' : function(browser) {
-	// 	givenSearchWithResult(browser);
-	// 	givenSearchText(browser, ' ');
-	// 	thenNumberOfSearchResultsIs(browser, TOTAL_NUMBER_OF_SEARCH_ELEMENTS);
-	// 	browser.end();
-	// },
+	'should search by nothing' : function(browser) {
+		givenSearchWithResult(browser);
+		givenSearchText(browser, ' ');
+		thenNumberOfSearchResultsIs(browser, TOTAL_NUMBER_OF_SEARCH_ELEMENTS);
+		browser.end();
+	},
 
 	'should search by second word of the title' : function(browser) {
 		givenSearchText(browser, 'google');

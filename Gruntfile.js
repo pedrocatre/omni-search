@@ -118,18 +118,6 @@ module.exports = function( grunt ) {
 		shell: {
 			typescript: {
 				command: 'tsc src/omni.search.ts'
-			},
-			serveAsync: {
-				command: 'grunt serve',
-				options: {
-					async: true
-				}
-			},
-			e2eTest: {
-				command: 'nightwatch -e travis --verbose',
-				options: {
-					async: false
-				}
 			}
 		}
 
@@ -143,13 +131,8 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-shell-spawn');
 	grunt.loadNpmTasks('grunt-serve');
-	grunt.loadNpmTasks('grunt-concurrent');
 
 	grunt.registerTask( "travis", [ "karma:travis" ] );
 	grunt.registerTask( "build", [ "shell:typescript", "sass", "cssmin", "concat", "uglify" ] );
 	grunt.registerTask( "default", [ "build", "karma:unit:run" ] );
-
-	grunt.registerTask('serveAsync', [
-		'concurrent:serve'
-	]);
 };

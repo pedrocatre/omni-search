@@ -69,11 +69,11 @@ module.exports = {
 		browser.end();
 	},
 
-	// 'should search by non existing text' : function(browser) {
-	// 	givenSearchText(browser, 'searching for this will return nothing');
-	// 	thenNumberOfSearchResultsIs(browser, 0);
-	// 	browser.end();
-	// },
+	'should search by non existing text' : function(browser) {
+		givenSearchText(browser, 'searching for this will return nothing');
+		thenNumberOfSearchResultsIs(browser, 0);
+		browser.end();
+	},
 
 	// 'should search by nothing' : function(browser) {
 	// 	givenSearchWithResult(browser);

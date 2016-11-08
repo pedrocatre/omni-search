@@ -81,12 +81,14 @@ var ALERT_TYPE = 'ALERT',
 // Create a list of search items
 var searchItems = [
 	{
-		title: "Navigate to google",
-		type: NAVIGATE_TO_URL_TYPE
+		title: "Fork me on GitHub",
+		type: NAVIGATE_TO_URL_TYPE,
+		searchElementImgUrl: 'https://assets-cdn.github.com/pinned-octocat.svg' // overriding search element icon
 	},
 	{
 		title: "Important action change placeholder text",
-		type: REPLACE_MSG_PLACEHOLDER_TYPE
+		type: REPLACE_MSG_PLACEHOLDER_TYPE,
+		searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png'
 	},
 	{
 		title: "Trigger alert",

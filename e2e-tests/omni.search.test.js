@@ -1,4 +1,4 @@
-var DEMO_URL = 'http://localhost:9006/demo/index.html', OPEN_OMNI_SEARCH_BTN = 'button.open-search', OMNI_SEARCH_SELECTOR = '.omni-search', OMNI_SEARCH_LIST_ELEMENTS_SELECTOR = '.search-result', OMNI_SEARCH_INPUT_SELECTOR = '.omni-search input', TOTAL_NUMBER_OF_SEARCH_ELEMENTS = 3, SELECTED_ITEM_SELECTOR = '.selected-search-result';
+var DEMO_URL = 'http://localhost:9006/demo/index.html', OPEN_OMNI_SEARCH_BTN = 'button.open-search', OMNI_SEARCH_SELECTOR = '.omni-search', OMNI_SEARCH_LIST_ELEMENTS_SELECTOR = '.search-result', OMNI_SEARCH_INPUT_SELECTOR = '.omni-search input', TOTAL_NUMBER_OF_SEARCH_ELEMENTS = 8, SELECTED_ITEM_SELECTOR = '.selected-search-result', EXPECTED_PLACEHOLDER_MSG = 'And bring me a hard copy of the Internet so I can do some serious surfing. - Dilbert';
 function givenDemoPageIsOpen(browser) {
     browser
         .url(DEMO_URL)
@@ -74,13 +74,13 @@ module.exports = {
         givenSearchText(browser, 'IMPORT');
         thenNumberOfSearchResultsIs(browser, 1);
         whenClickSelectedItem(browser);
-        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
+        thenMsgPlaceholderContainsText(browser, EXPECTED_PLACEHOLDER_MSG);
         browser.end();
     },
     'should accept key presses to navigate and select elements': function (browser) {
         givenWentToSecondSearchResultUsingArrowKeys(browser);
         whenClickEnter(browser);
-        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
+        thenMsgPlaceholderContainsText(browser, EXPECTED_PLACEHOLDER_MSG);
         browser.end();
     }
 };

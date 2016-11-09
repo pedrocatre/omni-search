@@ -3,8 +3,9 @@ const DEMO_URL = 'http://localhost:9006/demo/index.html',
 	OMNI_SEARCH_SELECTOR = '.omni-search',
 	OMNI_SEARCH_LIST_ELEMENTS_SELECTOR = '.search-result',
 	OMNI_SEARCH_INPUT_SELECTOR = '.omni-search input',
-	TOTAL_NUMBER_OF_SEARCH_ELEMENTS = 3,
-	SELECTED_ITEM_SELECTOR = '.selected-search-result';
+	TOTAL_NUMBER_OF_SEARCH_ELEMENTS = 8,
+	SELECTED_ITEM_SELECTOR = '.selected-search-result',
+	EXPECTED_PLACEHOLDER_MSG = 'And bring me a hard copy of the Internet so I can do some serious surfing. - Dilbert';
 
 function givenDemoPageIsOpen(browser) {
 	browser
@@ -92,7 +93,7 @@ module.exports = {
 		thenNumberOfSearchResultsIs(browser, 1);
 		whenClickSelectedItem(browser);
 
-        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
+        thenMsgPlaceholderContainsText(browser, EXPECTED_PLACEHOLDER_MSG);
 
 		browser.end();
 	},
@@ -100,7 +101,7 @@ module.exports = {
 	'should accept key presses to navigate and select elements' : function(browser) {
 		givenWentToSecondSearchResultUsingArrowKeys(browser);
 		whenClickEnter(browser);
-        thenMsgPlaceholderContainsText(browser, 'Important action change placeholder text');
+		thenMsgPlaceholderContainsText(browser, EXPECTED_PLACEHOLDER_MSG);
 
 		browser.end();
 	}

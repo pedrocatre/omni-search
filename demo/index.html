@@ -24,8 +24,10 @@
 			margin-top: 200px;
 		}
 
-		.msg-placeholder {
+		blockquote {
 			margin-top: 200px;
+			margin-bottom: 50px;
+			color: white;
 		}
 
 		.btn.open-search {
@@ -59,19 +61,17 @@
 	</div>
 
 	<div class="row">
-		<div class="text-center">
-			<h1 class="msg-placeholder"></h1>
-		</div>
+		<blockquote>
+			<p class="msg-placeholder">A UI element for global searches</p>
+		</blockquote>
 	</div>
 
 	<div class="row">
-		<div>
 			<ul>
 				<li>Add search term to filter by</li>
 				<li>Use up and down arrows to navigate</li>
 				<li>Click Enter or click with mouse to trigger action</li>
 			</ul>
-		</div>
 	</div>
 </div>
 
@@ -95,11 +95,42 @@
 			{
 				title: "Important action change placeholder text",
 				type: REPLACE_MSG_PLACEHOLDER_TYPE,
-				searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png'
+				searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png',
+				quote: 'And bring me a hard copy of the Internet so I can do some serious surfing. - Dilbert'
 			},
 			{
 				title: "Trigger alert",
 				type: ALERT_TYPE
+			},
+			{
+				title: "Some other action",
+				type: REPLACE_MSG_PLACEHOLDER_TYPE,
+				searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png',
+				quote: 'I\'ll be happy to make these unnecessary changes to this irrelevant document. - Dilbert'
+			},
+			{
+				title: "and another",
+				type: REPLACE_MSG_PLACEHOLDER_TYPE,
+				searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png',
+				quote: 'If at first you don\'t succeed, try again. Then quit. No use being a fool about it. - Dilbert'
+			},
+			{
+				title: "yet another",
+				type: REPLACE_MSG_PLACEHOLDER_TYPE,
+				searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png',
+				quote: 'Engineers like to solve problems. If there are no problems handily available, they will create their own problems. - Dilbert'
+			},
+			{
+				title: "one more",
+				type: REPLACE_MSG_PLACEHOLDER_TYPE,
+				searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png',
+				quote: 'Change is good, you go first - Dilbert'
+			},
+			{
+				title: "mooooore",
+				type: REPLACE_MSG_PLACEHOLDER_TYPE,
+				searchElementImgUrl: 'http://pedrocatre.com/omni-search/demo/assets/gear.png',
+				quote: 'An optimist is simply a pessimist with no job experience. - Dilbert'
 			}
 		];
 
@@ -108,7 +139,7 @@
 		var callback = function (activatedItemData) {
 			switch (activatedItemData.type) {
 				case REPLACE_MSG_PLACEHOLDER_TYPE:
-					$('.msg-placeholder').text(activatedItemData.title);
+					$('.msg-placeholder').text(activatedItemData.quote);
 					break;
 				case NAVIGATE_TO_URL_TYPE:
 					window.location.href = 'https://github.com/pedrocatre/omni-search';
@@ -119,7 +150,6 @@
 				default:
 					alert('Unknown type');
 			}
-
 		};
 
 		// On keyboard shortcut

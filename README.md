@@ -120,7 +120,7 @@ var callback = function (activatedItemData) {
 };
 
 // On keyboard shortcut
-key('⌘+⇧+y', function() {
+key('⌘+⇧+l', function() {
 	openOmniSearch()
 });
 

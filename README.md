@@ -62,7 +62,8 @@ or
 	
 ### searchItems
 	
-You can pass any data you like in the searchItems. If you pass searchElementImgUrl to override the default icon for the element.
+You can pass any data you like in the searchItems.
+If you pass **searchElementImgUrl** you override the default icon for the element.
 
 ### callback
  
@@ -145,7 +146,7 @@ function openOmniSearch() {
 
 * The user clicks out
 * When a user triggers an action by clicking `Enter`or clicking the mouse.
-* When the user presses `Esc
+* When the user presses `Esc`
 
 ## Developing
 
